@@ -25,6 +25,7 @@ export class Right<L, R> {
 
 export type Either<R, L = never> = Left<L, R> | Right<L, R>;
 
+// Constructors
 export const left = <L>(left: L): Either<never, L> => {
   // return { value: left, _tag: "Left" };
   return new Left(left);
@@ -33,6 +34,8 @@ export const right = <R>(right: R): Either<R> => {
   // return { value: right, _tag: "Right" };
   return new Right(right);
 };
+
+// Guards
 export const isLeft = <R, L>(either: Either<R, L>): either is Left<L, R> => {
   return either._tag === "Left";
 };
