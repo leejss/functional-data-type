@@ -15,4 +15,12 @@ describe("Either test", () => {
     expect(right.value).toBe(1);
     expect(Either.isRight(right)).toBe(true);
   });
+
+  it("should be check error type", () => {
+    const error = Either.left(new Error("Error"));
+
+    if (Either.isLeft(error)) {
+      expect(error.value.message).toBe("Error");
+    }
+  });
 });
